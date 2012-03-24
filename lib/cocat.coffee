@@ -59,9 +59,11 @@ concat_string = (content, filepath, callback)->
   async.forEach line_numbers, check_line, (err)->
 
     # Nuke empty lines
+    ###
     lines.forEach (line, index)->
       if line.match /^\s*$/
         lines = lines.slice(0, index).concat lines.slice(index+1)
+    ###
 
     callback null, lines.join "\n"
 
