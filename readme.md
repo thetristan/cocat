@@ -17,8 +17,8 @@ Or by specifying a string and a path to use instead
 
     Cocat = require('cocat');
     Cocat.concat({
-      content: 'path_to_file.css'
-      path:    '/foo/bar/'
+      content: '/* CSS GOES HERE */'
+      path:    '../foo/bar/'
     }, (err, output) {
       ...
     });
@@ -26,9 +26,9 @@ Or by specifying a string and a path to use instead
 
 It also works great on the command line:
 
-    Usage: cocat [-hc] input.css [output.css]
+    $ cocat [-hc] input.css [output.css]
 
-    Available options:
+Available options:
 
       -h, --help
         Show this help information.
