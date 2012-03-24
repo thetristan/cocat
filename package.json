@@ -4,6 +4,7 @@
   "description": "Node module for asynchronous CSS file concatenation",
   "version": "0.1.0",
   "homepage": "http://github.com/thetristan/cocat",
+  "bin":{"cocat": "./bin/cocat"},
   "repository": {
     "type": "git",
     "url": "git://github.com/thetristan/cocat.git"
