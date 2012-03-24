@@ -1,7 +1,7 @@
 {
   "author": "Tristan Blease <tristan@bleaseinteractive.com> (http://tristanblease.com/)",
   "name": "cocat",
-  "description": "Simple helper module for asynchronous CSS concatenation",
+  "description": "Node module for asynchronous CSS file concatenation",
   "version": "0.1.0",
   "homepage": "http://github.com/thetristan/cocat",
   "repository": {
