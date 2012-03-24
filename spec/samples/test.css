@@ -1,0 +1,3 @@
+@import "imported.css";
+@import "sub/imported_also.css";
+h1 { font-size: 48px; }

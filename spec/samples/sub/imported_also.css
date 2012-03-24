@@ -1,0 +1,2 @@
+h3 { font-size: 24px; }
+@import "../child_import.css";

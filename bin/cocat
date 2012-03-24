@@ -1,0 +1,90 @@
+#!/usr/bin/env coffee
+
+fs      = require 'fs'
+cc      = require '../index'
+
+args    = process.argv.slice 2
+
+options =
+  compile:     false
+  show_help:   false
+  input_file:  null
+  output_file: null
+
+set_switch = (s)->
+  if s.indexOf('--') == 0
+    s = s.slice 2
+
+  if s.indexOf('-') == 0
+    s = s.slice(1).split ''
+    s.forEach (sw)->
+      set_switch sw
+    return
+
+  switch s
+    when 'c','compile'
+      options.compile = true;
+
+    when 'h','help'
+      options.show_help = true;
+
+    else
+      console.log "Sorry, but '#{s}' isn't a valid option."
+      options.show_help = true;
+
+
+arg_count = 0
+
+args.forEach (arg)->
+
+  return set_switch(arg) if arg.indexOf('-') == 0
+  arg_count++
+
+  switch arg_count
+    when 1
+      options.input_file = arg
+    when 2
+      options.output_file = arg
+
+
+if options.show_help || arg_count == 0
+  console.log \
+    """
+    Usage: cocat [-hc] input.css [output.css]
+
+    Available options:
+
+      -h, --help
+        Show this help information.
+
+      -c, --compile
+        Compile the file, even if no output file is specified.
+        E.g `cocat -c style.css` will save output to style.concat.css
+
+    """
+    process.exit 1
+
+if options.compile
+  options.output_file ||= options.input_file.replace '.css', '.concat.css'
+
+console.log 'calling'
+cc.concat filename: options.input_file, (err, result)->
+  console.log 'called'
+  if err
+    console.error err
+    process.exit 1
+
+  if !options.output_file
+    console.log result
+    process.exit 0
+  else
+    fs.writeFile options.output_file, result, (err)->
+      if err
+        console.error err
+        process.exit 1
+      console.log "Successfully concatenated @imports"
+      process.exit 0
+
+
+
+

@@ -1,0 +1,10 @@
+/* BEGIN "imported.css" */
+  h2 { font-size: 36px; }
+/* END "imported.css" */
+/* BEGIN "sub/imported_also.css" */
+  h3 { font-size: 24px; }
+  /* BEGIN "../child_import.css" */
+    h4 { font-size: 16px; }
+  /* END "../child_import.css" */
+/* END "sub/imported_also.css" */
+h1 { font-size: 48px; }

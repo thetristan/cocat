@@ -1,0 +1,23 @@
+{
+  "author": "Tristan Blease <tristan@bleaseinteractive.com> (http://tristanblease.com/)",
+  "name": "cocat",
+  "description": "Simple helper module for asynchronous CSS concatenation",
+  "version": "0.1.0",
+  "homepage": "http://github.com/thetristan/cocat",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/thetristan/cocat.git"
+  },
+  "engines": {
+    "node": "~0.6.13"
+  },
+  "dependencies": {
+    "async":">= 0.1.15",
+    "coffee-script":""
+  },
+  "devDependencies": {
+    "jasmine-node":""
+  },
+  "optionalDependencies": {}
+}
+
