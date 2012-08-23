@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/thetristan/cocat.png)](http://travis-ci.org/thetristan/cocat)
 # Cocat
 
 Node module for asynchronous CSS file concatenation. Looks for @import statements and replaces them with the actual content of the file if it exists, otherwise it just leaves the @import statement as-is.
