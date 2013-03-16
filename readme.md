@@ -6,35 +6,45 @@ Node module for asynchronous CSS file concatenation. Looks for @import statement
 
 Use it in your scripts by specifying a file
 
-    Cocat = require('cocat');
-    Cocat.concat({
-      filename: 'path_to_file.css'
-    }, (err, output) {
-      ...
-    });
+```javascript
+Cocat = require('cocat');
+Cocat.concat({
+  filename: 'path_to_file.css'
+}, function(err, output) {
+  // ...
+});
+```
 
 Or by specifying a string and a path to use instead
 
-    Cocat = require('cocat');
-    Cocat.concat({
-      content: '/* CSS GOES HERE */'
-      path:    '../foo/bar/'
-    }, (err, output) {
-      ...
-    });
-
+```javascript
+Cocat = require('cocat');
+Cocat.concat({
+  content: '/* CSS GOES HERE */'
+  path:    '../foo/bar/'
+}, function(err, output) {
+  // ...
+});
+```
 
 It also works great on the command line:
 
-    $ cocat [-hc] input.css [output.css]
+```
+Usage: cocat [options] input.css [output.css]
 
-Available options:
+Options:
 
-      -h, --help
-        Show this help information.
+  -h, --help     output usage information
+  -V, --version  output the version number
+  -s, --save     save output to a file based on the inputfile name
+```
 
-      -c, --compile
-        Compile the file, even if no output file is specified.
-        E.g `cocat -c style.css` will save output to style.concat.css
+Examples:
+
+```
+$ cocat bar.css          # concats and ouputs to stdout
+$ cocat -s foo.css       # concats and saves to foo.concat.css
+$ cocat baz.css qux.css  # concats and saves to qux.css
+```
 
 Happy concatenating!

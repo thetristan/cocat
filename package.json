@@ -2,24 +2,26 @@
   "author": "Tristan Blease <tristan@bleaseinteractive.com> (http://tristanblease.com/)",
   "name": "cocat",
   "description": "Node module for asynchronous CSS file concatenation",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "homepage": "http://github.com/thetristan/cocat",
-  "bin":{"cocat": "./bin/cocat"},
+  "bin": {
+    "cocat": "./bin/cocat"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/thetristan/cocat.git"
   },
   "engines": {
-    "node": "~0.6.13"
+    "node": ">=0.6.0"
   },
   "dependencies": {
-    "async":">= 0.1.15",
-    "underscore":""
+    "async": "~0.2.6",
+    "underscore": "~1.4.4",
+    "commander": "~1.1.1"
   },
   "devDependencies": {
-    "coffee-script":"",
-    "jasmine-node":""
+    "coffee-script": "~1.6.1",
+    "mocha": "~1.8.2"
   },
   "optionalDependencies": {}
 }
-

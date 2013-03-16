@@ -1,1 +1,1 @@
-module.exports = require './lib/cocat'
+module.exports = require('./lib/cocat');

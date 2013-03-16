@@ -23,11 +23,9 @@ padContent = (content, levels = depth) ->
 
 concatFile = (filename, cb) ->
   filename = path.resolve(filename)
-
-  fs.exists filename, (exists) ->
-    return cb(new Error("File #{filename} doesn't exist")) unless exists
-    fs.readFile filename, 'utf8', (err, data) ->
-      concatString(data, path.dirname(filename), cb)
+  fs.readFile filename, 'utf8', (err, data) ->
+    throw err if err?
+    concatString(data, path.dirname(filename), cb)
 
 concatString = (content, filepath, cb) ->
   lines = split(content)
@@ -43,6 +41,7 @@ concatString = (content, filepath, cb) ->
 
     file = filepath + '/' + filename
     concatFile file, (err, contents) ->
+      throw err if err?
       depth++
       paddedContents = padContent(contents)
       lines[lineNumber] = "/* BEGIN \"#{filename}\" */\n#{paddedContents}\n/* END \"#{filename}\" */"
@@ -50,7 +49,7 @@ concatString = (content, filepath, cb) ->
       next()
 
   async.forEach lineNumbers, checkLine, (err) ->
-    #lines = lines.map (line) -> line.replace(/\s+$/,'')
+    lines = lines.map (line) -> line.replace(/\s+$/,'')
     lines = compact(lines)
     content = merge(lines)
     cb(null, content)
@@ -59,6 +58,6 @@ concat = ({content, path, filename}, cb) ->
   return concatString(content, path, cb) if content && path
   return concatFile(filename, cb) if filename
 
-  cb(new Error("Content/path or a filename must be specified to concatenate"))
+  throw "Content/path or a filename must be specified to concatenate"
 
 module.exports.concat = concat
