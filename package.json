@@ -14,9 +14,10 @@
   },
   "dependencies": {
     "async":">= 0.1.15",
-    "coffee-script":""
+    "underscore":""
   },
   "devDependencies": {
+    "coffee-script":"",
     "jasmine-node":""
   },
   "optionalDependencies": {}
